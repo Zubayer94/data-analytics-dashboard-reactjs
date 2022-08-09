@@ -3,19 +3,23 @@ import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import AppSidebar from '../components/AppSidebar'
 import AppNavbar from '../components/AppNavbar'
+import AppFooter from '../components/AppFooter';
 
 const PrivateRoute = () => {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
     
     return (
-        <div className="container-scroller">
+        <div className="wrapper">
+            <AppNavbar />
             <AppSidebar />
-            <div className="container-fluid page-body-wrapper">
-                <AppNavbar />
-                <div className="page-wrapper">
-                    {isLoggedIn ? <Outlet /> : <Navigate to='/login'  /> }
-                </div>
-            </div>
+            
+            {isLoggedIn ? <Outlet /> : <Navigate to='/login'  /> }
+
+            <aside className="control-sidebar control-sidebar-dark">
+                {/* Control sidebar content goes here */}
+            </aside>
+            <AppFooter />
+
         </div>
     );
 };

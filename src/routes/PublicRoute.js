@@ -6,7 +6,7 @@ const PublicRoutes = () => {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
     return (
-        !!isLoggedIn ? <Navigate to='/test' replace={true} /> : <Outlet />
+        !!isLoggedIn ? <Navigate to='/' replace={true} /> : <Outlet />
     );
 };
 
